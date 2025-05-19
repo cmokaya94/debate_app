@@ -1,114 +1,46 @@
-/* src/pages/RecordArgument.css */
-
 .record-argument-page {
-  background: linear-gradient(135deg, #e3f0ff 0%, #d6ecfa 100%);
-  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 2rem;
-  font-family: 'Poppins', sans-serif;
 }
-
 .record-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  max-width: 500px;
   width: 100%;
-  padding: 2rem;
-  margin: 0 auto;
-  text-align: center;
-  color: #333;
 }
-
-.record-card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+.topic-text {
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
-
-.record-card-topic {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.record-card-rounds {
+.rounds-text {
   font-size: 1rem;
-  margin-bottom: 2rem;
-  font-weight: 500;
+  margin-bottom: 1rem;
   color: #555;
 }
-
-/* Recording Component Container */
-.recording-component {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem; /* spacing before the submit button */
-}
-
-/* The big "start/stop" record button and progress bar */
-.record-button {
-  background-color: #fc6868;
+.submit-button,
+.invite-button {
+  background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 1rem 2rem;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.record-button:hover {
-  background-color: #ff4a4a;
-}
-
-/* Progress bar container for countdown */
-.progress-bar-container {
-  width: 80%;
-  height: 12px;
-  background-color: #d7d7d7;
-  border-radius: 6px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background: linear-gradient(45deg, #ff4a4a, #ff8c00);
-  transition: width 0.4s ease;
-  border-radius: 6px;
-}
-
-.time-left-label {
-  font-size: 1rem;
-  color: #555;
-  margin-top: 0.5rem;
-}
-
-/* Audio preview styling */
-.audio-preview audio {
   margin-top: 1rem;
 }
-
-/* Submit Button */
-.submit-button {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.submit-button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
-
-.submit-button:hover {
-  background-color: #43a047;
+.transcript-box {
+  background: #f9f9f9;
+  border-radius: 6px;
+  padding: 1rem;
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 1rem;
 }

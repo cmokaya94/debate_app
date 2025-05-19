@@ -1,66 +1,88 @@
 import React, { useState } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import RecordingComponent from '../components/RecordingComponent';
 import axios from 'axios';
 import './RecordArgument.css';
 
 const RecordArgument = () => {
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-
   const topic = searchParams.get('topic') || '';
   const rounds = Number(searchParams.get('rounds')) || 2;
 
   const [recordedBlob, setRecordedBlob] = useState(null);
+  const [debateId, setDebateId]         = useState(null);
+  const [transcript, setTranscript]     = useState('');
+  const [loading, setLoading]           = useState(false);
 
-  const handleRecordingComplete = (audioBlob) => {
-    setRecordedBlob(audioBlob);
+  const shareLink = debateId
+    ? `${window.location.origin}/debate/${debateId}`
+    : '';
+
+  const handleRecordingComplete = (blob) => {
+    setRecordedBlob(blob);
   };
 
   const handleCreateDebate = async () => {
     if (!recordedBlob) {
-      alert('Please record your audio before submitting your debate.');
-      return;
+      return alert('Please record your argument first.');
     }
-
+    setLoading(true);
     try {
       const formData = new FormData();
-      formData.append('audio', recordedBlob, 'debate.webm');
+      formData.append('audio', recordedBlob, 'argument.webm');
       formData.append('topic', topic);
       formData.append('rounds', rounds);
 
-      const res = await axios.post('http://localhost:50001/createDebate', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-
-      const debateId = res.data.debateId;
-
-      if (!debateId) {
-        alert('Debate ID not returned from server.');
-        console.error('❌ No debateId returned:', res.data);
-        return;
-      }
-
-      console.log('✅ Created debate with ID:', debateId);
-      navigate(`/debate/${debateId}`);
-    } catch (error) {
-      console.error('Error creating debate:', error);
-      alert('There was an error creating your debate.');
+      const res = await axios.post(
+        'http://localhost:50001/createDebate',
+        formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
+      );
+      setDebateId(res.data.debateId);
+      setTranscript(res.data.transcript);
+    } catch (err) {
+      console.error(err);
+      alert('Error creating debate. Check console.');
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const handleInvite = () => {
+    navigator.clipboard.writeText(shareLink)
+      .then(() => alert('Link copied! Send to your friend.'))
+      .catch(() => alert('Could not copy link.'));
   };
 
   return (
     <div className="record-argument-page">
       <div className="record-card">
-        <h2 className="record-card-title">Debate Topic:</h2>
-        <p className="record-card-topic">{topic}</p>
-        <h4 className="record-card-rounds">Number of Rounds: {rounds}</h4>
+        <h2>Debate Topic:</h2>
+        <p className="topic-text">{topic}</p>
+        <p className="rounds-text">Rounds: {rounds}</p>
 
-        <RecordingComponent onRecordingComplete={handleRecordingComplete} timeLimit={30} />
+        <RecordingComponent
+          onRecordingComplete={handleRecordingComplete}
+          timeLimit={30}
+        />
 
-        <button className="submit-button" onClick={handleCreateDebate}>
-          Submit & Create Debate
-        </button>
+        {!debateId ? (
+          <button
+            className="submit-button"
+            onClick={handleCreateDebate}
+            disabled={loading}
+          >
+            {loading ? 'Processing…' : 'Submit & Create Debate'}
+          </button>
+        ) : (
+          <>
+            <h3>Your Transcript:</h3>
+            <pre className="transcript-box">{transcript}</pre>
+            <button className="invite-button" onClick={handleInvite}>
+              Invite Friend to Respond
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
