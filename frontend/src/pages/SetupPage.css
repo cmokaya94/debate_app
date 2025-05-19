@@ -1,0 +1,52 @@
+.setup-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9;
+}
+
+.setup-card {
+  text-align: center;
+  background: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 340px;
+  width: 100%;
+}
+
+.logo {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.setup-card h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.setup-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.google-button {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.google-button img {
+  width: 18px;
+  height: 18px;
+}

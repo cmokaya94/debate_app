@@ -1,0 +1,43 @@
+/* Home.css */
+.home-container {
+  /* A subtle gradient background */
+  background: linear-gradient(135deg, #f0f4ff 0%, #d6ecfa 100%);
+  min-height: 100vh; /* Make it fill the screen vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  background-color: #ff6b6b;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #ff4a4a;
+}

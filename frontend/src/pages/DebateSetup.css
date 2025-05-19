@@ -1,0 +1,105 @@
+.boxing-debate-page {
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Arial Black', sans-serif;
+  background-color: #f7f7f7;
+}
+
+.match-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.round-info {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.fighters-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.fighter-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  width: 150px;
+  margin: 0 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  animation: bounce 1.5s infinite alternate;
+}
+
+.red-corner {
+  border: 2px solid red;
+}
+
+.blue-corner {
+  border: 2px solid blue;
+}
+
+.glove-icon {
+  font-size: 2rem;
+}
+
+.fighter-name {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.vs-label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0 1rem;
+}
+
+.score-title {
+  margin: 2rem 0 1rem;
+}
+
+.scorecard {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 700px;
+  margin: auto;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-section {
+  text-align: left;
+  white-space: pre-wrap;
+  margin-bottom: 1rem;
+  font-family: monospace;
+}
+
+.button-group {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-button,
+.next-button {
+  background-color: #4CAF50;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.share-button:hover,
+.next-button:hover {
+  background-color: #388e3c;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-8px); }
+}
